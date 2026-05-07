@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { scroll-behavior: smooth; }
+body { @apply bg-base text-white antialiased; }
+.section { @apply mx-auto max-w-6xl px-6 py-24; }
+.card { @apply rounded-2xl border border-white/10 bg-panel p-6 backdrop-blur-xl; }
+.title { @apply mb-6 text-3xl font-semibold md:text-4xl; }
+.input { @apply rounded-xl border border-white/20 bg-black/20 p-3 outline-none focus:border-neon; }
+.btn-sm { @apply rounded-full border border-white/30 px-4 py-2 hover:border-neon; }

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1327"/><stop offset="1" stop-color="#1f2f53"/></linearGradient></defs>
+<rect width="800" height="1000" fill="url(#g)"/>
+<circle cx="400" cy="320" r="170" fill="#6f7da2"/>
+<rect x="250" y="500" width="300" height="320" rx="40" fill="#43557e"/>
+<text x="400" y="930" text-anchor="middle" fill="#9defff" font-family="Arial" font-size="32">Profile photo slot</text>
+</svg>
