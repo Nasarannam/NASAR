@@ -2,16 +2,112 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Form With CRUD</title>
-    <meta property="og:image" content="https://bolt.new/static/og_default.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
-    <script type="module" crossorigin src="/assets/index-DuZlwP7J.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BdOVfWfo.css">
+    <meta name="description" content="Nasar Annam portfolio - Full Stack Java Developer" />
+    <title>Nasar Annam | Full Stack Java Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="root"></div>
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">◐</button>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="brand">NA</div>
+      <nav>
+        <a href="#hero">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#testimonials">Testimonials</a><a href="#contact">Contact</a>
+      </nav>
+    </aside>
+
+    <main>
+      <section id="hero" class="hero reveal">
+        <div>
+          <p class="eyebrow">Full Stack Java Developer</p>
+          <h1>Hi, I'm <span class="accent">Nasar Annam</span>.<br />I build resilient software with clean architecture.</h1>
+          <p class="lead">Entry-level developer with hands-on internship experience shipping scalable REST APIs and analytics solutions with Java, Spring Boot, and PostgreSQL.</p>
+          <div class="cta-row">
+            <a class="btn" href="#projects">View Work</a>
+            <a class="btn ghost" href="#contact">Let's Connect</a>
+          </div>
+          <div class="stats">
+            <article><h3 data-counter="10">0</h3><p>Projects Delivered</p></article>
+            <article><h3 data-counter="100">0</h3><p>API Endpoints Built</p></article>
+            <article><h3 data-counter="99">0</h3><p>System Uptime (%)</p></article>
+          </div>
+        </div>
+        <div class="hero-photo-wrap">
+          <img src="profile.jpg" alt="Portrait of Nasar Annam" class="hero-photo" />
+        </div>
+      </section>
+
+      <section id="about" class="reveal">
+        <h2>About Me</h2>
+        <p>I’m a B.Tech Computer Science & Engineering student (2022–2026) at NASSA Ropeta Institute of Technology, focused on backend-heavy full-stack systems. I enjoy designing maintainable code, optimizing SQL, and turning complex ideas into reliable products.</p>
+      </section>
+
+      <section id="skills" class="reveal">
+        <h2>Skills & Expertise</h2>
+        <div class="skill-bars">
+          <div><label>Java / OOP / Spring Boot</label><span><i style="--w:92%"></i></span></div>
+          <div><label>PostgreSQL / MySQL</label><span><i style="--w:88%"></i></span></div>
+          <div><label>JavaScript / React Basics</label><span><i style="--w:80%"></i></span></div>
+          <div><label>REST APIs / Git Workflows</label><span><i style="--w:90%"></i></span></div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+          <article class="project-card"><h3>Online Task Management System</h3><p>Java + Spring Boot + PostgreSQL backend with JWT auth and modular architecture.</p></article>
+          <article class="project-card"><h3>Spam & Fake User Detection</h3><p>Python + ML model for precision filtering and reduced moderation overhead.</p></article>
+          <article class="project-card"><h3>Database Reporting & Analytics</h3><p>SQL-driven dashboarding with 40% faster report generation.</p></article>
+        </div>
+      </section>
+
+      <section id="experience" class="reveal">
+        <h2>Experience</h2>
+        <div class="timeline-item">
+          <button class="timeline-toggle" aria-expanded="false">Full Stack Java Intern · Marga Software (Jan 2025 – Present)</button>
+          <div class="timeline-content">
+            <ul>
+              <li>Improved maintainability and reduced redundant code by ~30% through OOP refactoring.</li>
+              <li>Built optimized PostgreSQL queries for CRUD operations and reporting.</li>
+              <li>Contributed to API docs, testing flows, and team-based Git commits.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="reveal">
+        <h2>Testimonials</h2>
+        <div class="carousel" id="carousel">
+          <blockquote class="active">“Nasar consistently shipped clean backend modules and proactively improved query performance.” <span>— Internship Mentor</span></blockquote>
+          <blockquote>“Strong analytical thinking and excellent ownership on assigned API tasks.” <span>— Team Lead</span></blockquote>
+          <blockquote>“Reliable, collaborative, and focused on writing maintainable code.” <span>— Peer Developer</span></blockquote>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal">
+        <h2>Contact</h2>
+        <form id="contactForm" novalidate>
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" rows="5" placeholder="Message" required></textarea>
+          <button class="btn" type="submit">Send Message</button>
+          <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <a href="mailto:nasarvaliannam@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/nasarannam" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://github.com/nasarannam" target="_blank" rel="noreferrer">GitHub</a>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
