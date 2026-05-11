@@ -2,16 +2,190 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Form With CRUD</title>
-    <meta property="og:image" content="https://bolt.new/static/og_default.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
-    <script type="module" crossorigin src="/assets/index-DuZlwP7J.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BdOVfWfo.css">
+    <meta name="description" content="NASAR ANNAM - Full Stack Java Developer portfolio" />
+    <title>NASAR ANNAM | Full Stack Java Developer</title>
+    <style>
+      :root {
+        --bg: #0b1220;
+        --surface: #121b2d;
+        --surface-2: #18263f;
+        --text: #e8f1ff;
+        --muted: #9fb3c8;
+        --primary: #4f8cff;
+        --accent: #31d0aa;
+        --accent-2: #ffb86c;
+        --danger: #ff6b8a;
+        --radius: 16px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: radial-gradient(circle at 10% 10%, #13203b 0%, var(--bg) 40%);
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      .bg-orb { position: fixed; inset: auto; width: 300px; height: 300px; border-radius: 50%; filter: blur(60px); opacity: .3; z-index: -1; animation: float 9s ease-in-out infinite; }
+      .orb1 { background: var(--primary); top: 5%; right: -100px; }
+      .orb2 { background: var(--accent); bottom: 20%; left: -120px; animation-delay: -2s; }
+      @keyframes float { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-30px)} }
+
+      nav {
+        position: sticky; top: 0; backdrop-filter: blur(8px); background: rgba(11,18,32,.75);
+        border-bottom: 1px solid rgba(159,179,200,.15); z-index: 30;
+      }
+      .nav-wrap { max-width: 1100px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding: .8rem 1rem; }
+      .logo { font-weight: 800; letter-spacing: .08em; }
+      .menu { display:flex; gap: 1rem; }
+      .menu a { color: var(--muted); text-decoration:none; padding:.3rem .6rem; border-radius: 8px; transition: .25s; }
+      .menu a:hover, .menu a:focus-visible { color:var(--text); background: rgba(79,140,255,.15); }
+      .toggle { border: 1px solid rgba(255,255,255,.2); background:transparent; color:var(--text); border-radius: 999px; padding:.35rem .75rem; cursor:pointer; }
+
+      section { max-width: 1100px; margin: 0 auto; padding: 5rem 1rem 2rem; }
+      .hero { min-height: 85vh; display:grid; grid-template-columns: 1.2fr .8fr; gap:2rem; align-items:center; }
+      h1 { font-size: clamp(2rem, 5vw, 3.6rem); line-height:1.15; margin:.2rem 0; }
+      h2 { font-size: clamp(1.5rem,3vw,2rem); margin-bottom: .8rem; }
+      .gradient { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip:text; background-clip:text; color: transparent; }
+      .lead { color: var(--muted); max-width: 60ch; }
+      .cta { display:flex; gap:.8rem; margin-top:1.2rem; }
+      .btn { border:none; border-radius: 12px; padding:.8rem 1rem; font-weight:600; cursor:pointer; transition: transform .2s, box-shadow .25s; text-decoration:none; display:inline-block; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.25); }
+      .btn-primary { background: linear-gradient(120deg, var(--primary), #6fa7ff); color:white; }
+      .btn-ghost { background: transparent; border:1px solid rgba(255,255,255,.25); color:var(--text); }
+
+      .profile { background: linear-gradient(145deg,var(--surface),var(--surface-2)); border-radius: var(--radius); padding: 1.2rem; border:1px solid rgba(255,255,255,.1); }
+      .profile img { width:100%; border-radius: 12px; object-fit: cover; aspect-ratio: 4/5; }
+
+      .card-grid { display:grid; gap: 1rem; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); }
+      .card { background: linear-gradient(145deg,var(--surface),#0f1a30); padding: 1rem; border-radius: var(--radius); border:1px solid rgba(255,255,255,.08); transition: transform .25s, border-color .25s; }
+      .card:hover { transform: translateY(-6px) scale(1.01); border-color: rgba(79,140,255,.65); }
+
+      .skills span { display:inline-block; padding:.35rem .6rem; margin:.2rem; border-radius:999px; background: rgba(79,140,255,.15); border:1px solid rgba(79,140,255,.4); }
+      .bar { height:10px; border-radius:999px; background:#0d1528; overflow:hidden; }
+      .bar i { display:block; height:100%; width:0; background: linear-gradient(90deg,var(--accent),var(--primary)); transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+
+      .timeline { border-left:2px solid rgba(79,140,255,.4); padding-left:1rem; }
+      .timeline article { margin-bottom: 1rem; background: var(--surface); padding:.8rem; border-radius: 10px; }
+
+      .testimonials { position: relative; overflow: hidden; }
+      .slide { display:none; }
+      .slide.active { display:block; animation: fade .5s ease; }
+      @keyframes fade { from{opacity:0; transform:translateX(15px)} to{opacity:1; transform:none} }
+
+      .contact form { display:grid; gap:.8rem; max-width:520px; }
+      input, textarea { background:#0d1528; border:1px solid rgba(255,255,255,.15); color:var(--text); padding:.8rem; border-radius:10px; }
+      input:focus, textarea:focus { outline:2px solid var(--primary); }
+      .error { color: var(--danger); min-height: 1.1em; }
+      footer { text-align:center; color:var(--muted); padding: 2.5rem 1rem; }
+      .socials a { color:var(--muted); margin:0 .45rem; text-decoration:none; }
+
+      [data-reveal] { opacity:0; transform: translateY(20px); transition: .7s ease; }
+      [data-reveal].show { opacity:1; transform: none; }
+
+      .light {
+        --bg: #f6f9ff; --surface:#ffffff; --surface-2:#eef4ff; --text:#102034; --muted:#4f6075;
+      }
+      @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } .menu { display:none; } }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation:none !important; transition:none !important; }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+    <nav aria-label="Primary navigation"><div class="nav-wrap"><div class="logo">NASAR</div><div class="menu"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div><button class="toggle" id="themeToggle" aria-label="Toggle theme">Light</button></div></nav>
+
+    <section class="hero">
+      <div data-reveal>
+        <p class="gradient">FULL STACK JAVA DEVELOPER</p>
+        <h1>Hi, I'm <span class="gradient">Nasar Annam</span> — building reliable, scalable web apps.</h1>
+        <p class="lead">Entry-level software engineer specializing in Java, Spring Boot, PostgreSQL, and modern frontend technologies with a focus on clean architecture and production-quality APIs.</p>
+        <div class="cta"><a class="btn btn-primary" href="#projects">View Projects</a><a class="btn btn-ghost" href="#contact">Let's Connect</a></div>
+      </div>
+      <div class="profile" data-reveal>
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80" alt="Portrait of Nasar Annam" />
+      </div>
+    </section>
+
+    <section id="about" data-reveal><h2>About</h2><p class="lead">B.Tech Computer Science student (2022–2026) at NIT, Hyderabad. Experience includes Java internship work on resilient REST APIs, SQL optimization, code quality improvements, and collaborative Git workflows.</p></section>
+
+    <section id="skills" data-reveal>
+      <h2>Skills & Expertise</h2>
+      <div class="skills"><span>Java</span><span>Spring Boot</span><span>PostgreSQL</span><span>REST APIs</span><span>JavaScript</span><span>Git/GitHub</span></div>
+      <div class="card-grid" style="margin-top:1rem">
+        <div class="card"><strong>Backend Engineering</strong><div class="bar"><i data-width="92%"></i></div></div>
+        <div class="card"><strong>Database Design</strong><div class="bar"><i data-width="86%"></i></div></div>
+        <div class="card"><strong>Frontend Development</strong><div class="bar"><i data-width="76%"></i></div></div>
+      </div>
+    </section>
+
+    <section id="projects" data-reveal>
+      <h2>Portfolio Projects</h2>
+      <div class="card-grid">
+        <article class="card"><h3>Online Task Management System</h3><p>Layered Spring Boot + PostgreSQL backend with rigorous validation and zero unhandled exceptions.</p></article>
+        <article class="card"><h3>Spam & Fake User Detection</h3><p>Python + ML pipeline with precision-recall tradeoff optimization and robust data cleaning.</p></article>
+        <article class="card"><h3>Database Reporting & Analytics</h3><p>Optimized SQL queries and built Power BI dashboard to replace manual reporting workflows.</p></article>
+      </div>
+    </section>
+
+    <section id="experience" data-reveal>
+      <h2>Experience Timeline</h2>
+      <div class="timeline">
+        <article><strong>Magara Software — Full Stack Java Intern</strong><br/>Jan 2025 - Present · Hyderabad<br/>Improved API resilience, reduced redundancy, optimized PostgreSQL queries, and maintained disciplined Git history.</article>
+      </div>
+    </section>
+
+    <section class="testimonials" data-reveal>
+      <h2>Testimonials</h2>
+      <div class="card slide active">“Nasar delivered clean, maintainable backend modules and collaborated exceptionally well across the team.”</div>
+      <div class="card slide">“Strong SQL optimization mindset and excellent debugging discipline.”</div>
+      <div class="card slide">“Reliable execution and thoughtful ownership of API quality.”</div>
+    </section>
+
+    <section id="contact" class="contact" data-reveal>
+      <h2>Contact</h2>
+      <form id="contactForm" novalidate>
+        <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required />
+        <textarea rows="4" name="message" placeholder="Message" aria-label="Message" required></textarea>
+        <p class="error" id="formMsg" aria-live="polite"></p>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer><div class="socials"><a href="mailto:nasarvaliannam@gmail.com">Email</a><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></div><p>© 2026 Nasar Annam</p></footer>
+
+    <script>
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            entry.target.querySelectorAll('i[data-width]').forEach((bar, idx) => setTimeout(() => bar.style.width = bar.dataset.width, idx * 130));
+          }
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+      const slides = [...document.querySelectorAll('.slide')]; let current = 0;
+      setInterval(() => { slides[current].classList.remove('active'); current = (current + 1) % slides.length; slides[current].classList.add('active'); }, 3500);
+
+      const form = document.getElementById('contactForm');
+      const msg = document.getElementById('formMsg');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const data = new FormData(form);
+        if (![...data.values()].every(v => String(v).trim())) { msg.textContent = 'Please fill all fields.'; return; }
+        msg.style.color = 'var(--accent)'; msg.textContent = 'Message sent successfully!'; form.reset();
+      });
+
+      const toggle = document.getElementById('themeToggle');
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('light');
+        toggle.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
+      });
+    </script>
   </body>
 </html>
