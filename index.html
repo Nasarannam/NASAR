@@ -90,9 +90,8 @@
         display: grid; place-items: center; animation: pulse 5s ease infinite;
       }
       .photo {
-        width: 100%; aspect-ratio: 3/4; border-radius: 18px;
-        background: linear-gradient(160deg, #253869 5%, #18233f 55%, #0e1428 100%);
-        border: 1px solid var(--border); display: grid; place-items: center; color: var(--muted); text-align: center;
+        width: 100%; aspect-ratio: 3/4; border-radius: 18px; object-fit: cover; object-position: center 20%;
+        border: 1px solid var(--border); display: block;
       }
 
       .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
@@ -165,7 +164,7 @@
             </div>
           </div>
           <div class="photo-card">
-            <div class="photo" role="img" aria-label="Professional profile photo placeholder">Drop your portrait image here<br>(assets/profile.jpg)</div>
+            <img class="photo" src="assets/profile.jpg" alt="Portrait of Nasar Annam" loading="eager" decoding="async" />
           </div>
         </section>
 
