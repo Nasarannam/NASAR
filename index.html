@@ -2,16 +2,101 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Form With CRUD</title>
-    <meta property="og:image" content="https://bolt.new/static/og_default.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
-    <script type="module" crossorigin src="/assets/index-DuZlwP7J.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BdOVfWfo.css">
+    <title>Nasar Annam | Software Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Nasar Annam - Full Stack & Java Developer" />
+    <style>
+      :root {
+        --bg: #0b1220;
+        --surface: #111b2f;
+        --surface-2: #172542;
+        --text: #eaf1ff;
+        --muted: #9cb0d6;
+        --primary: #5b8cff;
+        --secondary: #22d3ee;
+        --accent: #f59e0b;
+        --success: #10b981;
+        --danger: #ef4444;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, Segoe UI, system-ui, sans-serif;
+        background: radial-gradient(circle at 10% 10%, #1d2f54 0%, var(--bg) 55%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .blob{position:fixed;inset:auto;pointer-events:none;z-index:0;filter:blur(40px);opacity:.2;animation:float 10s ease-in-out infinite}
+      .b1{width:220px;height:220px;background:var(--secondary);top:8%;left:4%}
+      .b2{width:280px;height:280px;background:var(--primary);bottom:10%;right:4%;animation-delay:2s}
+      @keyframes float{50%{transform:translateY(-20px) translateX(10px)}}
+      nav{position:fixed;left:0;top:0;bottom:0;width:84px;background:rgba(8,13,24,.7);backdrop-filter:blur(8px);display:flex;align-items:center;z-index:10;border-right:1px solid #223458}
+      nav ul{list-style:none;padding:0;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+      nav a{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;color:var(--muted);text-decoration:none;transition:.25s}
+      nav a:hover,nav a:focus-visible{background:var(--surface-2);color:var(--text);transform:translateY(-3px)}
+      main{margin-left:84px;position:relative;z-index:1}
+      section{padding:72px 8vw;opacity:0;transform:translateY(28px);transition:all .7s}
+      section.in{opacity:1;transform:none}
+      h1,h2{line-height:1.2;margin:0 0 16px}
+      h1{font-size:clamp(2rem,5vw,4rem)}
+      h2{font-size:clamp(1.5rem,3vw,2.2rem)}
+      .hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:34px}
+      .chip{display:inline-block;padding:6px 12px;border:1px solid #2b3d63;border-radius:999px;color:var(--secondary);font-size:.9rem}
+      .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+      .btn{border:none;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;transition:.25s;text-decoration:none}
+      .btn.primary{background:linear-gradient(120deg,var(--primary),#7f9dff);color:white}
+      .btn.ghost{background:transparent;color:var(--text);border:1px solid #314974}
+      .btn:hover{transform:translateY(-2px) scale(1.02)}
+      .portrait{width:min(360px,100%);border-radius:24px;box-shadow:0 22px 52px #0007;border:1px solid #2f446d}
+      .grid{display:grid;gap:16px}
+      .skills{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+      .card{background:linear-gradient(150deg,var(--surface),var(--surface-2));border:1px solid #2a3c64;border-radius:16px;padding:18px;transition:transform .25s}
+      .card:hover{transform:translateY(-6px)}
+      .bar{height:8px;border-radius:99px;background:#203257;overflow:hidden;margin-top:8px}
+      .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--secondary),var(--primary));transform-origin:left;animation:grow 1.4s ease both}
+      @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+      .projects{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+      .flip{perspective:1000px;height:220px}
+      .flip-inner{height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s}
+      .flip:hover .flip-inner{transform:rotateY(180deg)}
+      .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;padding:18px;background:linear-gradient(145deg,#132241,#1a2c50);border:1px solid #30466f}
+      .back{transform:rotateY(180deg)}
+      .timeline{border-left:2px solid #324a74;padding-left:18px}
+      .timeline-item{margin:20px 0;position:relative}
+      .timeline-item::before{content:"";position:absolute;left:-26px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+      .testimonials{display:flex;overflow:hidden;position:relative}
+      .slide{min-width:100%;transition:transform .6s}
+      form{max-width:640px}
+      input,textarea{width:100%;background:#0e1930;border:1px solid #2f446c;color:var(--text);padding:12px;border-radius:10px;margin:8px 0 14px}
+      input:focus,textarea:focus{outline:2px solid var(--secondary)}
+      .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+      .stat{text-align:center;background:#0f1a31;padding:14px;border-radius:12px;border:1px solid #29406a}
+      footer{padding:22px 8vw 36px;margin-left:84px;color:var(--muted)}
+      @media (max-width:900px){nav{height:64px;width:100%;bottom:auto;border-right:none;border-bottom:1px solid #223458}nav ul{flex-direction:row;gap:8px}main,footer{margin:64px 0 0}.hero{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+      @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="blob b1"></div><div class="blob b2"></div>
+    <nav aria-label="Section navigation"><ul>
+      <li><a href="#hero">🏠</a></li><li><a href="#about">👤</a></li><li><a href="#skills">🛠</a></li><li><a href="#projects">📁</a></li><li><a href="#experience">📈</a></li><li><a href="#contact">✉️</a></li>
+    </ul></nav>
+    <main>
+      <section id="hero" class="hero in"><div><span class="chip">Java + Full-Stack Developer</span><h1>Nasar Annam</h1><p>Building robust backend systems and clean web experiences with Core Java, Spring Boot, PostgreSQL, and modern frontend technologies.</p><div class="cta"><a class="btn primary" href="#projects">View Projects</a><a class="btn ghost" href="#contact">Hire Me</a></div><div class="stats"><div class="stat"><h3 data-count="1">0</h3><small>Internships</small></div><div class="stat"><h3 data-count="3">0</h3><small>Featured Projects</small></div><div class="stat"><h3 data-count="2026">0</h3><small>Grad Year</small></div></div></div><img class="portrait" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Portrait of Nasar Annam" /></section>
+      <section id="about"><h2>About</h2><p>Entry-level Software Developer and B.Tech CSE (2022-2026) focused on efficient, maintainable, and production-minded development. Strong in OOP principles, REST APIs, and database optimization.</p></section>
+      <section id="skills"><h2>Skills</h2><div class="grid skills"><div class="card"><strong>Java / OOP / DSA</strong><div class="bar"><span style="width:90%"></span></div></div><div class="card"><strong>Spring Boot / REST APIs</strong><div class="bar"><span style="width:85%"></span></div></div><div class="card"><strong>PostgreSQL / MySQL</strong><div class="bar"><span style="width:82%"></span></div></div><div class="card"><strong>JavaScript / HTML / CSS</strong><div class="bar"><span style="width:78%"></span></div></div></div></section>
+      <section id="projects"><h2>Projects</h2><div class="grid projects"><article class="flip"><div class="flip-inner"><div class="face"><h3>Online Task Management</h3><p>Core Java, PostgreSQL, REST</p></div><div class="face back"><p>Engineered backend with modular services and robust input validation.</p></div></div></article><article class="flip"><div class="flip-inner"><div class="face"><h3>Spam & Fake User Detection</h3><p>Python, ML, Scikit-learn</p></div><div class="face back"><p>Selected optimal model by precision-recall analysis for high quality detection.</p></div></div></article><article class="flip"><div class="flip-inner"><div class="face"><h3>DB Reporting & Analytics</h3><p>SQL, PostgreSQL, Power BI</p></div><div class="face back"><p>Optimized queries and automated dashboards replacing manual reporting.</p></div></div></article></div></section>
+      <section id="experience"><h2>Experience</h2><div class="timeline"><div class="timeline-item"><h3>Full Stack Java Intern - Marga Software</h3><p>Jan 2025 - Present, Hyderabad. Improved API quality and SQL performance while collaborating via Git workflow.</p></div></div></section>
+      <section><h2>Testimonials</h2><div class="testimonials"><div class="slide"><div class="card">“Nasar consistently delivered maintainable code and thoughtful optimizations.” — Team Lead</div></div></div></section>
+      <section id="contact"><h2>Contact</h2><form id="contactForm"><label>Name<input required aria-label="Name" /></label><label>Email<input type="email" required aria-label="Email" /></label><label>Message<textarea rows="4" required aria-label="Message"></textarea></label><button class="btn primary" type="submit">Send Message</button><p id="formMsg" role="status" aria-live="polite"></p></form></section>
+    </main>
+    <footer>© 2026 Nasar Annam • LinkedIn • GitHub • Email</footer>
+    <script>
+      const observer = new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.2});
+      document.querySelectorAll('section').forEach(s=>observer.observe(s));
+      document.querySelectorAll('[data-count]').forEach(el=>{const max=+el.dataset.count;let n=0;const t=setInterval(()=>{n+=Math.ceil(max/40);if(n>=max){n=max;clearInterval(t)}el.textContent=n;},28)});
+      document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const msg=document.getElementById('formMsg');msg.style.color='var(--success)';msg.textContent='Message sent successfully. I will get back to you soon!';e.target.reset();});
+    </script>
   </body>
 </html>
