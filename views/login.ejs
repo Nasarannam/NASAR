@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Master DB</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="card auth-card">
+      <p class="eyebrow">Master DB</p>
+      <h1>Organization Login</h1>
+      <p class="muted">Login with the same organization Gmail and password created during registration.</p>
+
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+
+      <form action="/login" method="post" class="form">
+        <label>
+          Organization Gmail
+          <input type="email" name="orgGmail" placeholder="organization@gmail.com" value="<%= values.orgGmail || '' %>" required>
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" placeholder="Password" required>
+        </label>
+        <button type="submit" class="button primary">Login</button>
+      </form>
+
+      <p class="switch-link">New organization? <a href="/register">Create account</a></p>
+    </section>
+  </main>
+</body>
+</html>

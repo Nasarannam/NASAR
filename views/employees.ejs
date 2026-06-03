@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employees | Master DB</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="dashboard">
+    <header class="topbar card">
+      <div>
+        <p class="eyebrow">Logged in organization</p>
+        <h1><%= orgGmail %></h1>
+      </div>
+      <form action="/logout" method="post">
+        <button type="submit" class="button secondary">Logout</button>
+      </form>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <h2><%= editing ? 'Update Employee' : 'Create Employee' %></h2>
+        <p class="muted">Employee table fields: serialno, ename, sal, loc.</p>
+        <form action="<%= editing ? `/employees/${editing.serialno}/update` : '/employees' %>" method="post" class="form">
+          <label>
+            Employee Name (ename)
+            <input name="ename" value="<%= values.ename || '' %>" required>
+          </label>
+          <label>
+            Salary (sal)
+            <input type="number" name="sal" min="0" step="0.01" value="<%= values.sal || '' %>" required>
+          </label>
+          <label>
+            Location (loc)
+            <input name="loc" value="<%= values.loc || '' %>" required>
+          </label>
+          <button type="submit" class="button primary"><%= editing ? 'Update' : 'Create' %></button>
+          <% if (editing) { %>
+            <a class="button light" href="/employees">Cancel</a>
+          <% } %>
+        </form>
+      </div>
+
+      <div class="card table-card">
+        <h2>Employee Data</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>serialno</th>
+                <th>ename</th>
+                <th>sal</th>
+                <th>loc</th>
+                <th>actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (employees.length === 0) { %>
+                <tr>
+                  <td colspan="5" class="empty">No employees yet. Create the first employee.</td>
+                </tr>
+              <% } %>
+              <% employees.forEach((employee) => { %>
+                <tr>
+                  <td><%= employee.serialno %></td>
+                  <td><%= employee.ename %></td>
+                  <td><%= employee.sal %></td>
+                  <td><%= employee.loc %></td>
+                  <td class="actions">
+                    <a class="button small light" href="/employees/<%= employee.serialno %>/edit">Edit</a>
+                    <form action="/employees/<%= employee.serialno %>/delete" method="post" onsubmit="return confirm('Delete this employee?')">
+                      <button type="submit" class="button small danger">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
