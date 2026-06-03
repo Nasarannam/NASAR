@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Master DB</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="card auth-card">
+      <p class="eyebrow">Master DB</p>
+      <h1>Create Organization</h1>
+      <p class="muted">Your organization Gmail and password are saved in the Neon database.</p>
+
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+
+      <form action="/register" method="post" class="form">
+        <label>
+          Organization Gmail
+          <input type="email" name="orgGmail" placeholder="organization@gmail.com" value="<%= values.orgGmail || '' %>" required>
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" minlength="6" placeholder="At least 6 characters" required>
+        </label>
+        <button type="submit" class="button primary">Create and Login</button>
+      </form>
+
+      <p class="switch-link">Already created? <a href="/login">Login here</a></p>
+    </section>
+  </main>
+</body>
+</html>

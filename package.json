@@ -1,0 +1,20 @@
+{
+  "name": "nasar-master-db-app",
+  "version": "1.0.0",
+  "description": "Simple organization login and employee CRUD app using Neon/PostgreSQL master_db.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "connect-pg-simple": "^10.0.0",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {}
+}
