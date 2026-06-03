@@ -1,0 +1,15 @@
+{
+  "name": "nasar-registration-crud",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static registration form CRUD application prepared for deployment.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "preview": "python3 -m http.server 4173 --directory ."
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
